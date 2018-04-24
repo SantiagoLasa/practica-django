@@ -1,0 +1,23 @@
+<html>
+    <body>
+        
+        <a href="{%url 'index'%}">back</a>
+        <h1>
+        Todos los articulos
+        </h1>
+        <br>
+        {% for a in todos_los_post %}
+            <a href="{% url 'articulo' a.id %}" value={{a.id}}> {{a.titulo}} : {{a.texto}}</a>
+            <br>
+        {% endfor %}
+
+
+        <form action="{% url 'crear_post' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="titulo"><br>
+            <input type="text" name="texto"><br>
+            <br>
+            <button type="submit" value="submit"> crear post </button>
+        </form>
+    </body>
+</html>
